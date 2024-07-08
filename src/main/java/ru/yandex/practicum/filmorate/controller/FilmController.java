@@ -1,6 +1,7 @@
 package ru.yandex.practicum.filmorate.controller;
 
 import jakarta.validation.Valid;
+import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/films")
+@Log
 public class FilmController {
-    private final static Logger LOGGER = LoggerFactory.getLogger(FilmController.class);
-
     private final LocalDate movieBirthday = LocalDate.of(1895, 12, 28);
     private final Map<Long, Film> films = new HashMap<>();
 
@@ -26,19 +26,15 @@ public class FilmController {
     }
 
     @PostMapping
-    public Film create(@Valid @RequestBody Film film) {
+    public Film createFilm(@Valid @RequestBody Film film) {
         // проверяем выполнение необходимых условий
 
         if (film.getReleaseDate().isBefore(movieBirthday)) {
             throw new ValidationException("Дата релиза не может раньше 24 декабря 1895 года");
         }
 
-        // формируем дополнительные данные
         film.setId(getNextId());
-        LOGGER.info("Для фильма {} установлен ID {}.", film.getName(), film.getId());
-        // сохраняем новую публикацию в памяти приложения
         films.put(film.getId(), film);
-        LOGGER.info("Фильм с названием {} добавлен в коллекцию.", film.getName());
         return film;
     }
 

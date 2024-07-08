@@ -16,6 +16,6 @@ class FilmControllerTest {
     void create() {
         Film film = new Film();
         film.setReleaseDate(LocalDate.of(1879, 12, 1));
-        assertThrows(ValidationException.class, () -> filmController.create(film), "Дата релиза не может раньше 24 декабря 1895 года");
+        assertThrows(ValidationException.class, () -> filmController.createFilm(film), "Дата релиза не может раньше 24 декабря 1895 года");
     }
 }
