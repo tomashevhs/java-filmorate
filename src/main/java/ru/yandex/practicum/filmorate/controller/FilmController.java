@@ -15,7 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/films")
 public class FilmController {
-    private final Logger log = LoggerFactory.getLogger(FilmController.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(FilmController.class);
 
     private final LocalDate movieBirthday = LocalDate.of(1895, 12, 28);
     private final Map<Long, Film> films = new HashMap<>();
@@ -35,10 +35,10 @@ public class FilmController {
 
         // формируем дополнительные данные
         film.setId(getNextId());
-        log.info("Для фильма {} установлен ID {}.", film.getName(), film.getId());
+        LOGGER.info("Для фильма {} установлен ID {}.", film.getName(), film.getId());
         // сохраняем новую публикацию в памяти приложения
         films.put(film.getId(), film);
-        log.info("Фильм с названием {} добавлен в коллекцию.", film.getName());
+        LOGGER.info("Фильм с названием {} добавлен в коллекцию.", film.getName());
         return film;
     }
 

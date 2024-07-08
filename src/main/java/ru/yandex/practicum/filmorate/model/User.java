@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDate;
 
 @Data
-@EqualsAndHashCode(of = {"email"})
+@EqualsAndHashCode(of = {"email", "id", "name", "birthday", "login"})
 public class User {
 
     private Long id;

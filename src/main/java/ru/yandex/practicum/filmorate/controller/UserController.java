@@ -15,7 +15,7 @@ import java.util.Map;
 @RequestMapping("/users")
 public class UserController {
     private final Map<Long, User> users = new HashMap<>();
-    private final Logger log = LoggerFactory.getLogger(UserController.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping
     public Collection<User> findAll() {
@@ -30,9 +30,9 @@ public class UserController {
         }
 
         user.setId(getNextId());
-        log.info("Для юзера {} установлен ID {}.", user.getName(), user.getId());
+        LOGGER.info("Для юзера {} установлен ID {}.", user.getName(), user.getId());
         users.put(user.getId(), user);
-        log.info("Юзер с названием {} добавлен в коллекцию.", user.getName());
+        LOGGER.info("Юзер с названием {} добавлен в коллекцию.", user.getName());
         return user;
     }
 

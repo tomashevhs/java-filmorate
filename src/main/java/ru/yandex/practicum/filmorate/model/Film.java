@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * Film.
  */
 @Data
-@EqualsAndHashCode(of = {"id"})
+@EqualsAndHashCode(of = {"id", "name", "description", "releaseDate", "duration"})
 public class Film {
 
     private Long id;
