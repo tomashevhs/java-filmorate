@@ -14,8 +14,6 @@ import java.util.Map;
 @RequestMapping("/films")
 @AllArgsConstructor
 public class FilmController {
-
-
     private final FilmService filmService;
 
     @GetMapping
@@ -42,6 +40,7 @@ public class FilmController {
     public void deleteLikes(@PathVariable("id") Long id, @PathVariable("friendId") Long friendId) {
         filmService.deleteLike(id, friendId);
     }
+
     @GetMapping("/popular?count={count}")
     public List<Film> getTopFilms(@PathVariable("count") @RequestParam(defaultValue = "10") Long count) {
         return filmService.findTopFilms(count);
