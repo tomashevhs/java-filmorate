@@ -66,8 +66,5 @@ public class UserController {
         return Map.of("error", "Параметр id не указан.");
     }
 
-    @ExceptionHandler
-    public Map<String, String> handleNegativeRunTime(final RuntimeException e) {
-        return Map.of("error", "Произошла ошибка!");
-    }
+
 }
