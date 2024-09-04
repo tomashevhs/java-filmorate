@@ -6,6 +6,7 @@ import java.util.Collection;
 
 public interface UserService {
     Collection<User> findAll();
+
     User createUser(User user);
 
     User updateUser(User newUser);
