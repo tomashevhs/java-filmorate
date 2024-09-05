@@ -55,16 +55,4 @@ public class UserController {
                                                       @PathVariable("otherId") Long otherId) {
         return null;
     }
-
-    @ExceptionHandler
-    public Map<String, String> handleNegativeCount(final IllegalArgumentException e) {
-        return Map.of("error", "Передан отрицательный параметр id.");
-    }
-
-    @ExceptionHandler
-    public Map<String, String> handleNullCount(final NullPointerException e) {
-        return Map.of("error", "Параметр id не указан.");
-    }
-
-
 }

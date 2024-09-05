@@ -3,6 +3,7 @@ package ru.yandex.practicum.filmorate.storage.user;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
+import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 
@@ -45,7 +46,7 @@ public class InMemoryUserStorage implements UserStorage {
             oldUser.setBirthday(newUser.getBirthday());
             return oldUser;
         } else {
-            throw new ValidationException("Юзер с id = " + newUser.getId() + " не найден");
+            throw new NotFoundException("Юзер с id = " + newUser.getId() + " не найден");
         }
     }
 

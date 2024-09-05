@@ -45,16 +45,4 @@ public class FilmController {
     public List<Film> getTopFilms(@PathVariable("count") @RequestParam(defaultValue = "10") Long count) {
         return filmService.findTopFilms(count);
     }
-
-    @ExceptionHandler
-    public Map<String, String> handleNegativeCount(final IllegalArgumentException e) {
-        return Map.of("error", "Передан отрицательный параметр count.");
-    }
-
-    @ExceptionHandler
-    public Map<String, String> handleNullCount(final NullPointerException e) {
-        return Map.of("error", "Параметр count не указан.");
-    }
-
-
 }
