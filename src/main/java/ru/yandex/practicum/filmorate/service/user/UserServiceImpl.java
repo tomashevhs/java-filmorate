@@ -5,13 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.user.UserStorage;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -84,5 +83,15 @@ public class UserServiceImpl implements UserService {
             }
         }
         return userFriends;
+    }
+
+    @Override
+    public Collection<User> getFriendsOfTwoUsers(Long userId, Long otherId) {
+        Set<Long> friends = userStorage.getUser(userId).getFriends();
+        return userStorage.getUser(otherId).getFriends().stream()
+                .filter(friends::contains)
+                .map(userStorage::getUser)
+                .collect(Collectors.toList());
+
     }
 }
