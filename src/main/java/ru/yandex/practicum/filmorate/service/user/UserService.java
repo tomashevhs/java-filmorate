@@ -19,6 +19,6 @@ public interface UserService {
 
     Collection<User> findAllFriends(Long userId);
 
-    Collection<User> getFriendsOfTwoUsers(Long userId, Long otherId);
+    Collection<User> getCommonFriends(Long userId, Long otherId);
 
 }

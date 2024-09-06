@@ -1,8 +1,6 @@
 package ru.yandex.practicum.filmorate.storage.film;
 
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
@@ -21,7 +19,7 @@ public class InMemoryFilmStorage implements FilmStorage {
         return films.values();
     }
 
-    public Film createFilm(@Valid @RequestBody Film film) {
+    public Film createFilm(Film film) {
         // проверяем выполнение необходимых условий
 
         if (film.getReleaseDate().isBefore(movieBirthday)) {
@@ -33,7 +31,7 @@ public class InMemoryFilmStorage implements FilmStorage {
         return film;
     }
 
-    public Film update(@Valid @RequestBody Film newFilm) {
+    public Film update(Film newFilm) {
 
         if (films.containsKey(newFilm.getId())) {
             Film oldFilm = films.get(newFilm.getId());

@@ -1,8 +1,6 @@
 package ru.yandex.practicum.filmorate.storage.user;
 
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 
@@ -20,7 +18,7 @@ public class InMemoryUserStorage implements UserStorage {
     }
 
 
-    public User createUser(@Valid @RequestBody User user) {
+    public User createUser(User user) {
 
         if (user.getName() == null) {
             user.setName(user.getLogin());
@@ -32,7 +30,7 @@ public class InMemoryUserStorage implements UserStorage {
     }
 
 
-    public User updateUser(@Valid @RequestBody User newUser) {
+    public User updateUser(User newUser) {
         if (users.containsKey(newUser.getId())) {
             User oldUser = users.get(newUser.getId());
 
