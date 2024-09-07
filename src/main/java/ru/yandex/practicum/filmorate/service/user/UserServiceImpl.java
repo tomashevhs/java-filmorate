@@ -10,6 +10,7 @@ import ru.yandex.practicum.filmorate.storage.user.UserStorage;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addFriend(Long userId, Long friendId) {
-        if (userStorage.getUser(userId) != null && userStorage.getUser(friendId) != null) {
+        if (Objects.nonNull(userStorage.getUser(userId)) && Objects.nonNull(userStorage.getUser(friendId))) {
             User user = userStorage.getUser(userId);
             User friend = userStorage.getUser(friendId);
             user.getFriends().add(friendId);
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteFriend(Long userId, Long friendId) {
-        if (userStorage.getUser(userId) != null && userStorage.getUser(friendId) != null) {
+        if (Objects.nonNull(userStorage.getUser(userId)) && Objects.nonNull(userStorage.getUser(friendId))) {
             User user = userStorage.getUser(userId);
             User friend = userStorage.getUser(friendId);
             Set<Long> userFriends = user.getFriends();
@@ -68,7 +69,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public Collection<User> findAllFriends(Long userId) {
-        if (userStorage.getUser(userId) != null) {
+        if (Objects.nonNull(userStorage.getUser(userId))) {
             Set<Long> friends = userStorage.getUser(userId).getFriends();
             ArrayList<User> userFriends = new ArrayList<>();
             for (Long id : friends) {

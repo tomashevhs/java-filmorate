@@ -39,7 +39,7 @@ public class InMemoryFilmService implements FilmService {
 
     @Override
     public void addLike(Long filmId, Long userId) {
-        if (filmStorage.getFilm(filmId) != null && userStorage.getUser(userId) != null) {
+        if (Objects.nonNull(filmStorage.getFilm(filmId))  && Objects.nonNull(userStorage.getUser(userId))) {
             Film film = filmStorage.getFilm(filmId);
             Set<Long> likes = film.getLikes();
             likes.add(userId);
@@ -52,7 +52,7 @@ public class InMemoryFilmService implements FilmService {
 
     @Override
     public void deleteLike(Long filmId, Long userId) {
-        if (filmStorage.getFilm(filmId) != null && userStorage.getUser(userId) != null) {
+        if (Objects.nonNull(filmStorage.getFilm(filmId)) && Objects.nonNull(userStorage.getUser(userId))) {
             Set<Long> likes = filmStorage.getFilm(filmId).getLikes();
             likes.remove(userId);
             filmStorage.getFilm(filmId).setLikes(likes);

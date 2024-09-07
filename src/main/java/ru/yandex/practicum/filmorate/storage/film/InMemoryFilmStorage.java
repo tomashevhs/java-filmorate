@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Component
 public class InMemoryFilmStorage implements FilmStorage {
-    private final LocalDate movieBirthday = LocalDate.of(1895, 12, 28);
+    private final LocalDate MOVIE_BIRTHDAY = LocalDate.of(1895, 12, 28);
     private final Map<Long, Film> films = new HashMap<>();
 
     public Collection<Film> findAll() {
@@ -22,7 +22,7 @@ public class InMemoryFilmStorage implements FilmStorage {
     public Film createFilm(Film film) {
         // проверяем выполнение необходимых условий
 
-        if (film.getReleaseDate().isBefore(movieBirthday)) {
+        if (film.getReleaseDate().isBefore(MOVIE_BIRTHDAY)) {
             throw new ValidationException("Дата релиза не может раньше 24 декабря 1895 года");
         }
 
@@ -32,11 +32,10 @@ public class InMemoryFilmStorage implements FilmStorage {
     }
 
     public Film update(Film newFilm) {
-
         if (films.containsKey(newFilm.getId())) {
             Film oldFilm = films.get(newFilm.getId());
 
-            if (newFilm.getReleaseDate().isBefore(movieBirthday)) {
+            if (newFilm.getReleaseDate().isBefore(MOVIE_BIRTHDAY)) {
                 throw new ValidationException("Дата релиза не может раньше 24 декабря 1895 года");
             }
 
