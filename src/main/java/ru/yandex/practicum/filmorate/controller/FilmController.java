@@ -15,6 +15,10 @@ import java.util.List;
 public class FilmController {
     private final FilmService filmService;
 
+    public FilmController(FilmService filmService) {
+        this.filmService = filmService;
+    }
+
     @GetMapping
     public Collection<Film> findAll() {
         return filmService.findAll();

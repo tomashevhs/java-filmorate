@@ -31,4 +31,12 @@ public class Film {
     private Long duration;
 
     private Set<Long> likes = new HashSet<>();
+
+    public Set<Long> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Set<Long> likes) {
+        this.likes = likes;
+    }
 }

@@ -29,4 +29,12 @@ public class User {
     private LocalDate birthday;
 
     private Set<Long> friends = new HashSet<>();
+
+    public Set<Long> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<Long> friends) {
+        this.friends = friends;
+    }
 }
