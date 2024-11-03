@@ -29,7 +29,7 @@ public class GenreRepository extends BaseRepository<Genres> {
     }
 
     public Genres getGenreById(Integer id) {
-        if (findOne(QUERY_FOR_GENRE_BY_ID, id) != null){
+        if (findOne(QUERY_FOR_GENRE_BY_ID, id) != null) {
             return findOne(QUERY_FOR_GENRE_BY_ID, id);
         } else {
             throw new NotFoundException("Такого жанра не существует");
