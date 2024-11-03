@@ -3,8 +3,7 @@ package ru.yandex.practicum.filmorate.model;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -13,11 +12,15 @@ import java.util.Set;
 /**
  * Film.
  */
+@Setter
+@Getter
 @Data
-@EqualsAndHashCode(of = {"id", "name", "description", "releaseDate", "duration"})
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = {"id"})
 public class Film {
 
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "Название не может быть пустым")
     private String name;
@@ -28,15 +31,11 @@ public class Film {
     private LocalDate releaseDate;
 
     @Positive(message = "Продолжительность фильма должна быть положительной")
-    private Long duration;
+    private Integer duration;
 
-    private Set<Long> likes = new HashSet<>();
+    private MPA mpa;
 
-    public Set<Long> getLikes() {
-        return likes;
-    }
+    private Set<Genres> genres = new HashSet<>();
 
-    public void setLikes(Set<Long> likes) {
-        this.likes = likes;
-    }
+    private Set<Integer> likes = new HashSet<>();
 }

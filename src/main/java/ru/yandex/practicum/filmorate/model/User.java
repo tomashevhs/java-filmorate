@@ -3,18 +3,19 @@ package ru.yandex.practicum.filmorate.model;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
+@Setter
+@Getter
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = {"email", "id", "name", "birthday", "login"})
 public class User {
 
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "Имейл не должен быть пустым")
     @Email(message = "Имейл должен содержать симвом @")
@@ -27,14 +28,4 @@ public class User {
 
     @Past(message = "Дата рождения не может быть в будущем")
     private LocalDate birthday;
-
-    private Set<Long> friends = new HashSet<>();
-
-    public Set<Long> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(Set<Long> friends) {
-        this.friends = friends;
-    }
 }
