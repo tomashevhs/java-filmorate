@@ -9,7 +9,7 @@ public interface UserStorage {
 
     User createUser(User user);
 
-    User updateUser(User newUser);
+    User updateUser(User user);
 
-    User getUser(Long id);
+    User getUser(Integer id);
 }
