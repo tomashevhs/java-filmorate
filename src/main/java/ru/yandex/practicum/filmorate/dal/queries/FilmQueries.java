@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum FilmQueries {
-    QUERY_FOR_ALL_FILMS("SELECT * FROM film f, " +
-            "rating_MPA rm WHERE f.film_rating_MPA_id = rm.rating_MPA_id"),
+    QUERY_FOR_ALL_FILMS("SELECT * FROM film , " +
+            "rating_MPA  WHERE film.film_rating_MPA_id = rating_MPA.rating_MPA_id"),
 
     INSERT_QUERY("INSERT INTO film (film_name, film_description, film_release_date," +
             " film_duration, film_rating_MPA_id) VALUES (?, ?, ?, ?, ?)"),

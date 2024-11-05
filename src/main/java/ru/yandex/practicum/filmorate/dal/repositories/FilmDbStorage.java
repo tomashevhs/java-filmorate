@@ -67,11 +67,11 @@ public class FilmDbStorage extends BaseRepository<Film> implements FilmStorage {
 
     private Map<Integer, Set<Genres>> getAllGenres() {
         Map<Integer, Set<Genres>> genres = new HashMap<>();
-        return jdbc.query(FilmQueries.QUERY_FOR_ALL_FILMS.getQuery(), (ResultSet rs) -> {
+        return jdbc.query(FilmQueries.QUERY_ALL_GENRES_FILMS.getQuery(), (ResultSet rs) -> {
             while (rs.next()) {
-                Integer filmId = rs.getInt("FILM_ID");
-                Integer genreId = rs.getInt("GENRE_ID");
-                String genreName = rs.getString("GENRE_NAME");
+                Integer filmId = rs.getInt("film_id");
+                Integer genreId = rs.getInt("genre_id");
+                String genreName = rs.getString("genre_name");
                 genres.computeIfAbsent(filmId, k -> new HashSet<>()).add(new Genres(genreId, genreName));
             }
             return genres;
@@ -93,8 +93,8 @@ public class FilmDbStorage extends BaseRepository<Film> implements FilmStorage {
         return jdbc.query(FilmQueries.QUERY_GENRES_BY_FILM.getQuery(), (ResultSet rs) -> {
             Set<Genres> genres = new HashSet<>();
             while (rs.next()) {
-                Integer genreId = rs.getInt("GENRE_ID");
-                String genreName = rs.getString("GENRE_NAME");
+                Integer genreId = rs.getInt("genre_id");
+                String genreName = rs.getString("genre_name");
                 genres.add(new Genres(genreId, genreName));
             }
             return genres;
