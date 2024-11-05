@@ -11,7 +11,6 @@ import ru.yandex.practicum.filmorate.model.Genres;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 @Repository

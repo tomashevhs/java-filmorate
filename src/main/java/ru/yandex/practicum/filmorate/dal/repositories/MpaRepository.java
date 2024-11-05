@@ -8,7 +8,6 @@ import ru.yandex.practicum.filmorate.dal.queries.MpaQuery;
 import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.model.MPA;
 
-import java.util.Collection;
 import java.util.List;
 
 @Repository

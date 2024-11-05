@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import ru.yandex.practicum.filmorate.dal.repositories.MpaRepository;
 import ru.yandex.practicum.filmorate.model.MPA;
 
-import java.util.Collection;
 import java.util.List;
 
 @Slf4j
