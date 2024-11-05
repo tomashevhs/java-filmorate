@@ -8,6 +8,7 @@ import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.Collection;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -25,7 +26,7 @@ public class UserService {
     }
 
 
-    public Collection<User> findAll() {
+    public List<User> findAll() {
         return userDbStorage.findAll();
     }
 
@@ -50,7 +51,7 @@ public class UserService {
         friendsRepository.deleteFr(userId, friendId);
     }
 
-    public Collection<User> findAllFriends(Integer userId) {
+    public List<User> findAllFriends(Integer userId) {
         if (userDbStorage.getUser(userId) == null) {
             throw new NotFoundException("Пользователя не существует.");
         }
@@ -58,7 +59,7 @@ public class UserService {
     }
 
 
-    public Collection<User> getCommonFriends(Integer userId, Integer otherId) {
+    public List<User> getCommonFriends(Integer userId, Integer otherId) {
         return friendsRepository.findCommonFriends(userId, otherId);
     }
 }

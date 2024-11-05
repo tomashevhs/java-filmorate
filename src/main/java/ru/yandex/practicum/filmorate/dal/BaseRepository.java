@@ -10,7 +10,9 @@ import ru.yandex.practicum.filmorate.exception.NotFoundException;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 public class BaseRepository<T> {
@@ -55,7 +57,7 @@ public class BaseRepository<T> {
 
         Integer id = keyHolder.getKeyAs(Integer.class);
 
-        if (id != null) {
+        if (Objects.nonNull(id)) {
             return id;
         } else {
             throw new RuntimeException("Не удалось сохранить данные");

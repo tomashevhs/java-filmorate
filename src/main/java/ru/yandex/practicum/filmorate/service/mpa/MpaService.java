@@ -7,6 +7,7 @@ import ru.yandex.practicum.filmorate.dal.repositories.MpaRepository;
 import ru.yandex.practicum.filmorate.model.MPA;
 
 import java.util.Collection;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -14,7 +15,7 @@ import java.util.Collection;
 public class MpaService {
     private final MpaRepository mpaRepository;
 
-    public Collection<MPA> getAllMpa() {
+    public List<MPA> getAllMpa() {
         return mpaRepository.getAllMpa();
     }
 

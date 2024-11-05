@@ -15,7 +15,7 @@ import java.util.List;
 public class GenreService {
     private final GenreRepository genreRepository;
 
-    public Collection<Genres> getAllGenres() {
+    public List<Genres> getAllGenres() {
         return genreRepository.getAllGenres();
     }
 

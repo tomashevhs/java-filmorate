@@ -6,6 +6,7 @@ import ru.yandex.practicum.filmorate.model.Genres;
 import ru.yandex.practicum.filmorate.service.genre.GenreService;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,7 +16,7 @@ public class GenreController {
     private final GenreService genreService;
 
     @GetMapping
-    public Collection<Genres> getGenres() {
+    public List<Genres> getGenres() {
         return genreService.getAllGenres();
     }
 

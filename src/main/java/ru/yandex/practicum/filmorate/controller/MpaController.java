@@ -9,6 +9,7 @@ import ru.yandex.practicum.filmorate.model.MPA;
 import ru.yandex.practicum.filmorate.service.mpa.MpaService;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,7 +18,7 @@ public class MpaController {
     private final MpaService mpaService;
 
     @GetMapping
-    public Collection<MPA> getAllMpa() {
+    public List<MPA> getAllMpa() {
         return mpaService.getAllMpa();
     }
 

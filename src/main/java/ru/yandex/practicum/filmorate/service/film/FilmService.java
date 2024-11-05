@@ -11,6 +11,7 @@ import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.model.Genres;
 
 import java.util.Collection;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class FilmService {
     private final GenreRepository genreRepository;
     private final LikesRepository likesRepository;
 
-    public Collection<Film> findAll() {
+    public List<Film> findAll() {
         return filmDbStorage.findAll();
     }
 
@@ -70,7 +71,7 @@ public class FilmService {
         return film;
     }
 
-    public Collection<Film> getTopFilms(int count) {
+    public List<Film> getTopFilms(int count) {
         return filmDbStorage.findTopOfFilms(count);
     }
 }

@@ -4,21 +4,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ru.yandex.practicum.filmorate.dal.BaseRepository;
+import ru.yandex.practicum.filmorate.dal.queries.UserQuery;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.user.UserStorage;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository
 public class UserDbStorage extends BaseRepository<User> implements UserStorage {
-    private static final String FIND_ALL_QUERY = "SELECT * FROM users";
-    private static final String FIND_BY_ID_QUERY = "SELECT * FROM users WHERE user_id = ?";
-
-    private static final String INSERT_QUERY = "INSERT INTO users(user_email, user_name, user_login, user_birthday)" +
-            "VALUES (?, ?, ?, ?)";
-    private static final String UPDATE_USER_QUERY = "UPDATE users SET user_email = ?, user_name = ?, user_login = ?," +
-            " user_birthday = ?  WHERE user_id = ?";
-
 
     public UserDbStorage(JdbcTemplate jdbc, RowMapper<User> mapper) {
         super(jdbc, mapper);
@@ -26,13 +20,13 @@ public class UserDbStorage extends BaseRepository<User> implements UserStorage {
 
     @Override
     public List<User> findAll() {
-        return findMany(FIND_ALL_QUERY);
+        return findMany(UserQuery.FIND_ALL_QUERY.getQuery());
     }
 
     @Override
     public User createUser(User user) {
         Integer id = insert(
-                INSERT_QUERY,
+                UserQuery.INSERT_QUERY.getQuery(),
                 user.getEmail(),
                 user.getName(),
                 user.getLogin(),
@@ -45,7 +39,7 @@ public class UserDbStorage extends BaseRepository<User> implements UserStorage {
     @Override
     public User updateUser(User user) {
         update(
-                UPDATE_USER_QUERY,
+                UserQuery.UPDATE_USER_QUERY.getQuery(),
                 user.getEmail(),
                 user.getName(),
                 user.getLogin(),
@@ -57,7 +51,7 @@ public class UserDbStorage extends BaseRepository<User> implements UserStorage {
 
     @Override
     public User getUser(Integer id) {
-        return findOne(FIND_BY_ID_QUERY, id);
+        return findOne(UserQuery.FIND_BY_ID_QUERY.getQuery(), id);
     }
 
 
