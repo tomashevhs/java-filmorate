@@ -11,6 +11,7 @@ public enum UserQuery {
     UPDATE_USER_QUERY("UPDATE users SET user_email = ?, user_name = ?, user_login = ?," +
             " user_birthday = ?  WHERE user_id = ?");
     private final String query;
+
     UserQuery(String query) {
         this.query = query;
     }
